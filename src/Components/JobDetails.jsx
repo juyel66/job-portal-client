@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const JobDetails = () => {
   const job = useLoaderData();
@@ -50,17 +50,18 @@ const JobDetails = () => {
             <li key={index}>{resp}</li>
           ))}
         </ul>
+        div open care a  
       </div>
 
       {/* Apply Button */}
       <div className="mt-6 text-center">
-        <a
-          href={`mailto:${job.hr_email}`}
-          className="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition"
-        >
-          Apply Now
-        </a>
+
+        <Link to ={`/jobApply/${job._id}`}>
+        <p  className="px-6 py-2 bg-blue-500 text-white rounded-lg  shadow hover:bg-blue-600 transition"> Apply now</p>
+        </Link>
+        
       </div>
+      
     </div>
   );
 };
