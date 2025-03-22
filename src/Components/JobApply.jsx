@@ -1,10 +1,14 @@
-import {  useParams } from "react-router-dom";
+import {  useLoaderData, useNavigate, useParams } from "react-router-dom";
 import useAuth from "./useAuth";
+import Swal from "sweetalert2";
 
 const JobApply = () => {
+    const navigate = useNavigate()
     const {id} = useParams()
     console.log(id)
     const {user} = useAuth();
+    const jobs = useLoaderData()
+    console.log('data', jobs)
     console.log('user info:',user)
 
     const submitJObApplication = e =>{
@@ -21,12 +25,20 @@ const JobApply = () => {
             applicant_email: user.email,
             Name: user.displayName,
             Photo: user.photoURL,
+            title: jobs.title,
+            location: jobs.location,
+            jobType: jobs.jobType,
+            category: jobs.category,
+            applicationDeadline: jobs.applicationDeadline,
+            salaryRange: jobs.salaryRange,
+            description: jobs.description,
+            requirements: jobs.requirements,
             GithubLink,
             linkedin,
             Resume
         }
 
-        fetch('http://localhost:3000/job-application',{
+        fetch('http://localhost:5000/job-application',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -35,7 +47,15 @@ const JobApply = () => {
         })
         .then(res =>res.json())
         .then(data =>{
-            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: "Application send successful",
+                    icon: "success",
+                    draggable: true
+                  });
+                  navigate("/myApplication")
+
+            }
         })
 
         
