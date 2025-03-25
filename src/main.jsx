@@ -16,6 +16,7 @@ import JobDetails from './Components/JobDetails';
 import PrivetRout from './Components/PrivetRout';
 import JobApply from './Components/JobApply';
 import MyApplication from './Components/MyApplication';
+import GoogleLoginInfo from './Components/GoogleLoginInfo';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
     {
       path: '/myApplication',
       element: <PrivetRout><MyApplication></MyApplication></PrivetRout>
+    },
+    {
+      path:"/googleLoginUser-personalInfo",
+      element: <PrivetRout><GoogleLoginInfo></GoogleLoginInfo></PrivetRout>
     }
     ]
   },

@@ -42,6 +42,7 @@ const MyApplication = () => {
         <td>{user.displayName}</td>
         <td>{job.applicant_email}</td>
         <td>{job.salaryRange.min}-{job.salaryRange.max}  </td>
+    
       </tr>
     ) )
    }
